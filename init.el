@@ -30,6 +30,10 @@
 (setq-default save-place t)
 (require 'saveplace)
 
+(require 'git)
+(require 'git-blame)
+(require 'gitsum)
+
 ;; custom keys
 (global-set-key [delete] 'delete-char)
 (global-set-key [kp-delete] 'delete-char)
