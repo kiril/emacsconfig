@@ -41,7 +41,9 @@
 (set-default-font "-apple-inconsolata-medium-r-normal--15-*-*-*-*-*-mac-roman")
 (require 'color-theme)
 (color-theme-initialize)
-(color-theme-classic)
+(color-theme-charcoal-black)
+;; this one is also awesome:
+;; (color-theme-classic)
 
 ;; be nice with formatting
 (setq-default indent-tabs-mode nil)
