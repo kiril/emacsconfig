@@ -3,7 +3,6 @@
 	 (cursor-type . box )
 	 (foreground-color . "lawn green")
 	 (background-color . "black")))
-	 
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/.emacs-lisp/"))
 
@@ -52,6 +51,7 @@
 
 ;; editing features I like
 (show-paren-mode)
+(setq show-trailing-whitespace t)
 
 (add-hook 'find-file-hook 'auto-revert-mode)
 
@@ -72,6 +72,7 @@
 (global-set-key "\M-g" 'goto-line)
 
 ;; crazy shit I'm playing with
+(load "nxhtml/autostart.el")
 (load "objc.el")
 (load "twit.el");; twitter... this is kinda sick, and I don't use it much...
 (load "tagging.el");; tagging files.
