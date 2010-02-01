@@ -12,6 +12,7 @@
 (setq visible-bell t)
 
 (global-font-lock-mode t)
+(modify-frame-parameters (selected-frame) '((alpha . 97)))
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
@@ -35,14 +36,14 @@
 ;;Courier New @ 110
 ;;apple-monoco @ 110
 
-;; Incolsolata, a nice programming font
-;; use set-frame-font to pull up list of fonts
-(set-default-font "-apple-inconsolata-medium-r-normal--15-*-*-*-*-*-mac-roman")
 (require 'color-theme)
 (color-theme-initialize)
 (color-theme-charcoal-black)
 ;; this one is also awesome:
 ;; (color-theme-classic)
+;; Incolsolata, a nice programming font
+;; use set-frame-font to pull up list of fonts
+(set-default-font "-apple-inconsolata-medium-r-normal--11-*-*-*-*-*-mac-roman")
 
 ;; be nice with formatting
 (setq-default indent-tabs-mode nil)
@@ -52,6 +53,7 @@
 ;; editing features I like
 (show-paren-mode)
 (setq show-trailing-whitespace t)
+(set-default 'truncate-lines t)
 
 (add-hook 'find-file-hook 'auto-revert-mode)
 
@@ -70,9 +72,15 @@
 (global-set-key [(control \;)] 'hippie-expand)
 (global-set-key [(control tab)] 'indent-region)
 (global-set-key "\M-g" 'goto-line)
+(global-set-key "\C-J" 'join-line)
+(global-set-key [(control return)] 'newline-and-indent)
+(global-set-key "\M-\r" 'ns-toggle-fullscreen)
+
+;; Command is meta in OS X.
+(setq ns-command-modifier (quote meta))
 
 ;; crazy shit I'm playing with
-(load "nxhtml/autostart.el")
+;; (load "nxhtml/autostart.el")
 (load "objc.el")
 (load "twit.el");; twitter... this is kinda sick, and I don't use it much...
 (load "tagging.el");; tagging files.
@@ -117,6 +125,10 @@
       (cons '("\\.css$" . css-mode)
 	    auto-mode-alist))
 
+(setq auto-mode-alist
+      (cons '("\\.json$" . javascript-mode)
+            auto-mode-alist))
+
 (set-frame-position (selected-frame) 10 25)
 
 ;; makes border around buffer small
@@ -124,8 +136,8 @@
   (fringe-mode 1))
 
 ;; resize my window to fit the screen
-(set-frame-width (selected-frame) (truncate ( * 0.98 ( / (display-pixel-width)  (frame-char-width) ) ) ) )
-(set-frame-height (selected-frame) (truncate ( * 0.97 ( / (display-pixel-height) (frame-char-height) ) ) ) )
+;;(set-frame-width (selected-frame) (truncate ( * 0.98 ( / (display-pixel-width)  (frame-char-width) ) ) ) )
+;;(set-frame-height (selected-frame) (truncate ( * 0.97 ( / (display-pixel-height) (frame-char-height) ) ) ) )
 
 
 ;;; This was installed by package-install.el.
@@ -138,6 +150,7 @@
      (expand-file-name "~/.emacs.d/elpa/package.el"))
   (package-initialize))
 
+;; Org Mode
 ;; The following lines are always needed.  Choose your own keys.
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 (global-set-key "\C-cl" 'org-store-link)

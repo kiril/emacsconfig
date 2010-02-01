@@ -66,8 +66,8 @@
   (let ((ext (substring (buffer-file-name) -2)))
     (when (or (string= ext ".h") (string= ext ".m"))
         (if (string= (buffer-string) "")
-            (project-header)
-          (replace-regexp "__MyCompanyName__" project-name)))))
+            (project-header)))))
+;          (replace-regexp "__MyCompanyName__" project-name)))))
 
 ;; -------------------------- ;;
 
@@ -144,4 +144,4 @@
 (global-set-key "\C-xK" 'objc-kill-pair)
 (global-set-key "\M-b" 'xcode-build)
 (global-set-key "\M-r" 'xcode-run)
-(global-set-key "\M-\r" 'xcode-build-and-run)
+;; (global-set-key "\M-\r" 'xcode-build-and-run)
