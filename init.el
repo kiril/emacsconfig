@@ -157,4 +157,5 @@
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
 
-(transient-mark-mode 1)
+(transient-mark-mode 1) ;; yay for easy text selection
+(display-time) ;; yay for clocks
