@@ -53,6 +53,7 @@
 ;; editing features I like
 (show-paren-mode)
 (setq show-trailing-whitespace t)
+(set-default 'show-trailing-whitespace t)
 (set-default 'truncate-lines t)
 
 (add-hook 'find-file-hook 'auto-revert-mode)
@@ -75,6 +76,11 @@
 (global-set-key "\C-J" 'join-line)
 (global-set-key [(control return)] 'newline-and-indent)
 (global-set-key "\M-\r" 'ns-toggle-fullscreen)
+
+(add-hook 'python-mode-hook
+          (lambda ()
+            (define-key python-mode-map (kbd "M-]") 'python-shift-right)
+            (define-key python-mode-map (kbd "M-[") 'python-shift-left)))
 
 ;; Command is meta in OS X.
 (setq ns-command-modifier (quote meta))

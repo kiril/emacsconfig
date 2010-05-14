@@ -21,7 +21,7 @@
       (concat (substring (buffer-file-name) 0 -1) "m")
     (concat (substring (buffer-file-name) 0 -1) "h")))
 
-(defun objc-swap-file ()
+(defun objc-swap-files ()
   (interactive)
   (find-file (objc-other-file)))
 
@@ -33,14 +33,14 @@
       (delete-other-windows))
     (split-window-horizontally)
     (select-window (next-window))
-    (objc-swap-file)
+    (objc-swap-files)
     (message "done")))
 
 ;; * Close both this file and its counterpart
 (defun objc-kill-pair ()
   (interactive)
   (progn
-    (objc-swap-file)
+    (objc-swap-files)
     (kill-buffer nil)
     (kill-buffer nil)))
 
@@ -139,9 +139,17 @@
 (setq auto-mode-alist
       (cons '("\\.mm$" . objc-mode) auto-mode-alist))
 
-(global-set-key [(meta down)] 'objc-split-files)
-(global-set-key [(meta up)] 'objc-swap-file)
-(global-set-key "\C-xK" 'objc-kill-pair)
-(global-set-key "\M-b" 'xcode-build)
-(global-set-key "\M-r" 'xcode-run)
+;; (global-set-key [(meta down)] 'objc-split-files)
+;; (global-set-key [(meta up)] 'objc-swap-file)
+;; (global-set-key "\C-xK" 'objc-kill-pair)
+;; (global-set-key "\M-b" 'xcode-build)
+;; (global-set-key "\M-r" 'xcode-run)
 ;; (global-set-key "\M-\r" 'xcode-build-and-run)
+
+(add-hook 'objc-mode-hook
+          (lambda ()
+            (define-key objc-mode-map [(meta down)] 'objc-split-files)
+            (define-key objc-mode-map [(meta up)] 'objc-swap-files)
+            (define-key objc-mode-map "\C-xK" 'objc-kill-pair)
+            (define-key objc-mode-map "\M-b" 'xcode-build)
+            (define-key objc-mode-map "\M-r" 'xcode-run)))
