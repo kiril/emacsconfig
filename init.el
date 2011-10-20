@@ -23,6 +23,7 @@
 (load "cfg.el") ;; custom config
 (load "lng.el") ;; my language-specific configs
 (load "kbd.el") ;; keyboard shortcuts
+(load "less-css-mode.el")
 
 ;; crazy shit I'm playing with
 (load "objc.el")
