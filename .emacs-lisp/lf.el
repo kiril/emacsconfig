@@ -31,3 +31,6 @@
 (when window-system (fringe-mode 1))
 
 (put 'narrow-to-region 'disabled nil)
+
+(global-hl-line-mode 1)
+(set-face-background 'hl-line "#111")
