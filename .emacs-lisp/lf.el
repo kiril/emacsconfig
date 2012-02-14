@@ -12,7 +12,10 @@
 ;;(modify-frame-parameters (selected-frame) '((alpha . 100)))
 
 (display-battery-mode nil)
-(set-scroll-bar-mode nil)
+
+(if window-system
+    (progn
+      (set-scroll-bar-mode nil)))
 ;;(set-default-font "-*-Menlo-*-*-*-*-16-102-110-110-c-*-iso8859-1")
 (set-default-font "-apple-inconsolata-medium-r-normal--18-*-*-*-*-*-mac-roman")
 

@@ -8,7 +8,7 @@
 (require 'gitsum) ;; yay
 (require 'window-numbering) ;; jump between windows
 (require 'ido) ;; much better file opening
-(require 'css-mode) ;; yay
+;;(require 'css-mode) ;; yay
 (require 'mustache-mode) ;; oooo
 (require 'cl) ;; common lisp is fun (for arc)
 (require 'arc) ;; arc is funner
@@ -29,7 +29,19 @@
 (load "objc.el")
 (load "tagging.el");; tagging files.
 (load "js2.el")
+(load "css-mode")
+(load "rainbow-mode")
 (setq tagging-tagline-indicator "^//\\*")
+
+(add-hook 'css-mode-hook  'rainbow-mode)
+(add-hook 'less-css-mode-hook  'rainbow-mode)
+(add-hook 'html-mode-hook  'rainbow-mode)
+
+;;(require 'tramp)
+;;(setq tramp-default-method "ssh")
+
+;;(require 'python-pep8)
+;;(require 'python-pylint)
 
 ;; create a backup file directory
 (defun make-backup-file-name (file)
