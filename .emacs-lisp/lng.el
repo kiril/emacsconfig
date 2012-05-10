@@ -5,3 +5,13 @@
           (lambda ()
             (define-key python-mode-map (kbd "M-]") 'python-shift-right)
             (define-key python-mode-map (kbd "M-[") 'python-shift-left)))
+
+(defun coffee-custom ()
+  "coffee-mode-hook"
+  (set (make-local-variable 'tab-width) 4)
+  (define-key python-mode-map (kbd "M-]") 'python-shift-right)
+  (define-key python-mode-map (kbd "M-[") 'python-shift-left))
+
+
+(add-hook 'coffee-mode-hook
+  '(lambda() (coffee-custom)))

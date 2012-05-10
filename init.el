@@ -12,10 +12,12 @@
 (require 'mustache-mode) ;; oooo
 (require 'cl) ;; common lisp is fun (for arc)
 (require 'arc) ;; arc is funner
+(require 'coffee-mode)
 
 (setq save-place-file "~/.emacs.d/saveplace")
 (setq-default save-place t)
 (require 'saveplace)
+(require 'handlebars-mode)
 
 ;; my custom files
 (load "lf.el") ;; look & feel
@@ -37,44 +39,21 @@
 (add-hook 'less-css-mode-hook  'rainbow-mode)
 (add-hook 'html-mode-hook  'rainbow-mode)
 
-;;(require 'tramp)
-;;(setq tramp-default-method "ssh")
-
-;;(require 'python-pep8)
-;;(require 'python-pylint)
-
 ;; create a backup file directory
 (defun make-backup-file-name (file)
   (concat "~/.emacs_backups/" (file-name-nondirectory file) "~"))
 
-;; some nice modes
-
 ;; hook up all the modes
-(setq auto-mode-alist
-      (cons '("\\.s?arc?$" . arc-mode)
-            auto-mode-alist))
 
-(setq auto-mode-alist
-      (cons '("\\.js$" . javascript-mode)
-	    auto-mode-alist))
-
-(setq auto-mode-alist
-      (cons '("\\.yaml$" . yaml-mode)
-            auto-mode-alist))
-
-(setq auto-mode-alist
-      (cons '("\\.css$" . css-mode)
-	    auto-mode-alist))
-
-(setq auto-mode-alist
-      (cons '("\\.json$" . javascript-mode)
-            auto-mode-alist))
-
-(setq auto-mode-alist
-      (cons '("\\.mustache$" . mustache-mode)
-            auto-mode-alist))
-
-;;(set-frame-position (selected-frame) 10 25)
+(add-to-list 'auto-mode-alist '("\\.s?arc?$" . arc-mode))
+(add-to-list 'auto-mode-alist '("\\.js$" . javascript-mode))
+(add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
+(add-to-list 'auto-mode-alist '("\\.json$" . javascript-mode))
+(add-to-list 'auto-mode-alist '("\\.hb$" . mustache-mode)) ;; handlebars...
+(add-to-list 'auto-mode-alist '("\\.mustache$" . mustache-mode))
+(add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
+(add-to-list 'auto-mode-alist '("\\.hb$" . handlebars-mode))
 
 ;;; ELPA package stuff
 (when (load (expand-file-name "~/.emacs.d/elpa/package.el"))
