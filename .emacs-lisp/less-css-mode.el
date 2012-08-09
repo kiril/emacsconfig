@@ -29,7 +29,7 @@
 ;; THE SOFTWARE.
 
 
-(defcustom less-css-indent-level 2 "Number of spacnes to indent inside a block.")
+(defcustom less-css-indent-level 2 "Number of spaces to indent inside a block.")
 
 
 (defvar less-css-mode-hook nil)
@@ -54,7 +54,7 @@
   (list
    ;; Selectors
    (list "^[ \t]*\\([^\n;:{}()]*\\){?$" 1 font-lock-keyword-face)
-   
+
    ;; Properties
    (list "\\(\\w+\\)[ \t]*:" 1 font-lock-variable-name-face)
 
@@ -88,9 +88,14 @@
 
 (defun less-css-calculate-indentation ()
   "Return the column to which the current line should be indented."
+  (interactive)
   (save-excursion
     (beginning-of-line)
     (let ((indent-level 0))
+      (if (string-match "^\s*}\s*$" (buffer-substring-no-properties (point-at-bol) (point-at-eol)))
+          (progn (setq indent-level (- indent-level 1))
+                 (message "fired"))
+        (progn (message "didn't fire")))
       (while (not (bobp))
         ;; TODO search backwards
         (backward-char)

@@ -13,6 +13,7 @@
 (require 'cl) ;; common lisp is fun (for arc)
 (require 'arc) ;; arc is funner
 (require 'coffee-mode)
+(require 'uniquify)
 
 (setq save-place-file "~/.emacs.d/saveplace")
 (setq-default save-place t)

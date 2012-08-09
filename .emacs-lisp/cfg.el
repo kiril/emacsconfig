@@ -24,3 +24,6 @@
 
 ;; org-mode config
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+
+;; better same-named-buffer differentiation
+(setq uniquify-buffer-name-style 'forward)
