@@ -17,7 +17,7 @@
     (progn
       (set-scroll-bar-mode nil)))
 ;;(set-default-font "-*-Menlo-*-*-*-*-16-102-110-110-c-*-iso8859-1")
-(set-default-font "-apple-inconsolata-medium-r-normal--18-*-*-*-*-*-mac-roman")
+(set-default-font "-apple-inconsolata-medium-r-normal--16-*-*-*-*-*-mac-roman")
 
 (color-theme-initialize)
 ;;(color-theme-comidia)
