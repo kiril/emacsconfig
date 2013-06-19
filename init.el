@@ -35,6 +35,7 @@
 (load "css-mode")
 (load "rainbow-mode")
 (setq tagging-tagline-indicator "^//\\*")
+(load "fly-mode.el") ;; this is how nuts I am
 
 (add-hook 'css-mode-hook  'rainbow-mode)
 (add-hook 'less-css-mode-hook  'rainbow-mode)

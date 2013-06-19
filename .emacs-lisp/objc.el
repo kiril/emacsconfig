@@ -44,19 +44,22 @@
     (kill-buffer nil)
     (kill-buffer nil)))
 
+(defvar copyright-current-year "2013")
+
 ;; * this one generates the header that I'm using for GameChanger
 (setq project-name "GameChanger")
 (require 'calendar)
 (defun project-header ()
   (interactive)
   (progn
+    (setq copyright-current-year (substring (current-time-string) -4))
     (insert (concat
              "//\n"
              "// " (car (last (split-string (buffer-file-name) "/"))) "\n"
              "// " project-name "\n"
              "//\n"
              "// Created by Kiril Savino on " (calendar-date-string (calendar-current-date)) "\n"
-             "// Copyright 2008 " project-name ". All rights reserved.\n"
+             "// Copyright " copyright-current-year " " project-name ". All rights reserved.\n"
              "//\n"
              ))))
 
@@ -66,8 +69,8 @@
   (let ((ext (substring (buffer-file-name) -2)))
     (when (or (string= ext ".h") (string= ext ".m"))
         (if (string= (buffer-string) "")
-            (project-header)))))
-;          (replace-regexp "__MyCompanyName__" project-name)))))
+            (project-header)
+          (replace-regexp "__MyCompanyName__" project-name)))))
 
 ;; -------------------------- ;;
 
