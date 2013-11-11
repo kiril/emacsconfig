@@ -7,17 +7,17 @@
 	 (foreground-color . "lawn green")
 	 (background-color . "black")))
 
-(tool-bar-mode -1)
 (global-font-lock-mode t)
 ;;(modify-frame-parameters (selected-frame) '((alpha . 85)))
 ;;(modify-frame-parameters (selected-frame) '((alpha . 100)))
 
-(display-battery-mode nil)
+;;(display-battery-mode nil)
 
 (if window-system
     (progn
       (fringe-mode 1) ;; makes border around buffer small
       (set-scroll-bar-mode nil) ;; yay for no scroll bars
+      (tool-bar-mode -1) ;; fuck off toolbars
       ))
 
 ;;(set-default-font "-*-Menlo-*-*-*-*-16-102-110-110-c-*-iso8859-1")
